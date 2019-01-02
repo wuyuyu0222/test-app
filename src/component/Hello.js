@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Hello.css';
 import logo from '../logo.svg';
+import PropTypes from 'prop-types';
 
 class Hello extends Component {
   constructor(props) {
@@ -27,5 +28,9 @@ class Hello extends Component {
     );
   }
 }
+
+Hello.propTypes = {
+  name: PropTypes.string
+};
 
 export default Hello;
