@@ -18,7 +18,9 @@ export class Form extends Component {
   }
 
   handleSubmit = (e) => {
+    const id = this.state.personList.length;
     this.state.personList.push({
+      id: id,
       name: this.state.name,
       gender: this.state.gender,
       age: this.state.age
@@ -35,9 +37,9 @@ export class Form extends Component {
   displayTable = () => {
     let personList = [];
     if (this.state.personList.length > 0) {
-      personList = this.state.personList.reverse().map((person, i) => {
+      personList = this.state.personList.reverse().map(person => {
         return (
-          <tr key={i}>
+          <tr key={person.id}>
             <td>{person.name || 'Null'}</td>
             <td>{person.gender || 'Null'}</td>
             <td>{person.age || 'Null'}</td>
