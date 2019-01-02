@@ -5,6 +5,7 @@ import './App.css';
 import About from './component/About';
 import Hello from './component/Hello';
 import LifeCycle from './component/Life-Cycle';
+import Form from './component/Form';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
                 <li><Link to="/">App</Link></li>
                 <li><Link to="hello">Hello</Link></li>
                 <li><Link to="life-cycle">Life Cycle</Link></li>
+                <li><Link to="form">Form</Link></li>
               </ul>
             </div>
           </div>
@@ -24,6 +26,7 @@ class App extends Component {
             <Route exact path="/" component={About} />
             <Route path="/hello" render={props => <Hello name="jake" {...props} />} />
             <Route path="/life-cycle" render={props => <LifeCycle message="test" {...props} />} />
+            <Route path="/form" component={Form} />
           </div>
         </div>
       </Router>
