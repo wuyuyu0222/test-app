@@ -22,7 +22,7 @@ class App extends Component {
               </ul>
             </div>
           </div>
-          <div className="App-container">
+          <div className="container">
             <Route exact path="/" component={About} />
             <Route path="/hello" render={props => <Hello name="jake" {...props} />} />
             <Route path="/life-cycle" render={props => <LifeCycle message="test" {...props} />} />

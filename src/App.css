@@ -19,11 +19,6 @@
   height: 100vh;
 }
 
-.App-container {
-  display: flex;
-  min-width: calc(100% - 15rem);
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -38,6 +33,13 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.mt-2x {
+  margin-top: 16px;
+}
+.mr-2x {
+  margin-right: 16px;
 }
 
 @keyframes App-logo-spin {

@@ -44,9 +44,12 @@ class LifeCycle extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.handleClick}>button</button>
-        <h1>time stamp: {this.state.date.toLocaleTimeString()}</h1>
+      <div className="row mt-2x">
+        <div className="col s12">
+          <button className="waves-effect waves-light btn"
+            onClick={this.handleClick}>button</button>
+          <p>time stamp: {this.state.date.toLocaleTimeString()}</p>
+        </div>
       </div>
     );
   }
