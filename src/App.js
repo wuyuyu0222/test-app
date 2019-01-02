@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 
@@ -6,7 +6,7 @@ import About from './component/About';
 import Hello from './component/Hello';
 import LifeCycle from './component/Life-Cycle';
 
-class App extends React.Component {
+class App extends Component {
   render() {
     return (
       <Router>
