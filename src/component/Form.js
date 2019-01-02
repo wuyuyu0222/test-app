@@ -65,7 +65,7 @@ export class Form extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="row mt-2x">
         <form className="col s12" onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="input-field col s12">
