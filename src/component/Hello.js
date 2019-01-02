@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Hello.css';
 
-class Hello extends Component {
+class Hello extends React.Component {
   constructor(props) {
     super(props);
     this.name = props.name || 'World';
-    this.state = { time: new Date()};
+    this.state = { time: new Date() };
     this.refreshTime();
   }
 
@@ -15,7 +15,7 @@ class Hello extends Component {
   
   render() {
     return (
-      <div className="Hello">
+      <div>
         <p>Hello {this.name}, It is {this.state.time.toLocaleTimeString()}</p>
       </div>
     );
