@@ -20,7 +20,7 @@ class App extends React.Component {
           </div>
           <div className="App-container">
             <Route exact path="/" component={About} />
-            <Route path="/hello" render={props => <Hello name="jake" {... props} />} />
+            <Route path="/hello" render={props => <Hello name="jake" {...props} />} />
           </div>
         </div>
       </Router>

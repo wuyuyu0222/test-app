@@ -12,7 +12,7 @@ class Hello extends React.Component {
   refreshTime = () => {
     setInterval(() => this.setState({ time: new Date() }), 1000);
   };
-  
+
   render() {
     return (
       <div>
