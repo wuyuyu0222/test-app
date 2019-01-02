@@ -13,14 +13,12 @@ class App extends Component {
       <Router>
         <div className="App">
           <div className="App-sidebar">
-            <div>
-              <ul>
-                <li><Link to="/">App</Link></li>
-                <li><Link to="hello">Hello</Link></li>
-                <li><Link to="life-cycle">Life Cycle</Link></li>
-                <li><Link to="form">Form</Link></li>
-              </ul>
-            </div>
+            <ul id="nav-mobile" className="sidenav">
+              <li><Link to="/">App</Link></li>
+              <li><Link to="hello">Hello</Link></li>
+              <li><Link to="life-cycle">Life Cycle</Link></li>
+              <li><Link to="form">Form</Link></li>
+            </ul>
           </div>
           <div className="container">
             <Route exact path="/" component={About} />

@@ -10,13 +10,18 @@
 }
 
 .App-sidebar {
-  background-color: #a3aab8; 
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-items: center;
   width: 15rem;
   height: 100vh;
+}
+
+.App-sidebar .sidenav {
+  position: static;
+  transform: translateX(0);
+  width: 15rem;    
 }
 
 .App-header {
