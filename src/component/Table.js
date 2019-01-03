@@ -6,30 +6,42 @@ export default class Table extends Component {
     list: PropTypes.array
   };
 
+  drawHeader = (list) => {
+    const Headers = Object.keys(this.props.list[0])
+      .filter(key => key !== 'id')
+      .map(key => <th key={key}>{key.toUpperCase()}</th>);
+    return (
+      <thead>
+        <tr>
+          {Headers}
+        </tr>
+      </thead>
+    )
+  }
+
+  drawBody = (list) => {
+    const Bodys = this.props.list.map(item => {
+      const content = Object.keys(item)
+        .filter(key => key !== 'id')
+        .map(key => <td key={key}>{item[key]}</td>);
+      return (
+        <tr key={item.id}>{content}</tr>
+      );
+    });
+    return (
+      <tbody>
+        {Bodys}
+      </tbody>
+    )
+  }
+
   render() {
     if (this.props.list && this.props.list.length > 0) {
-      const Headers = Object.keys(this.props.list[0])
-        .filter(key => key !== 'id')
-        .map(key => <th key={key}>{key.toUpperCase()}</th>);
-      const Bodys = this.props.list.map(item => {
-        const content = Object.keys(item)
-          .filter(key => key !== 'id')
-          .map(key => <td key={key}>{item[key]}</td>);
-        return (
-          <tr key={item.id}>{content}</tr>
-        );
-      });
       return (
         <div>
           <table className="highlight">
-            <thead>
-              <tr>
-                {Headers}
-              </tr>
-            </thead>
-            <tbody>
-              {Bodys}
-            </tbody>
+            {this.drawHeader(this.props.list)}
+            {this.drawBody(this.props.list)}
           </table>
         </div>
       )
