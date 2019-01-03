@@ -10,6 +10,12 @@ import Fetch from './component/Fetch';
 
 export default class App extends Component {
   render() {
+    const person = {
+      name: 'jake',
+      email: 'jake@gmail.com',
+      gender: 'male'
+    };
+    const message = 'test message';
     return (
       <Router>
         <div className="App">
@@ -25,9 +31,9 @@ export default class App extends Component {
           </div>
           <div className="container">
             <Route exact path="/" component={About} />
-            <Route path="/hello" render={props => <Hello name="jake" {...props} />} />
-            <Route path="/life-cycle" render={props => <LifeCycle message="test" {...props} />} />
-            <Route path="/form" component={Form} />
+            <Route path="/hello" render={props => <Hello name={person.name} {...props} />} />
+            <Route path="/life-cycle" render={props => <LifeCycle message={message} {...props} />} />
+            <Route path="/form" render={props => <Form personList={[]} person={person} {...props} />} />
             <Route path="/fetch" component={Fetch} />
           </div>
         </div>
