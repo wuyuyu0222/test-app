@@ -6,6 +6,7 @@ import About from './component/About';
 import Hello from './component/Hello';
 import LifeCycle from './component/Life-Cycle';
 import Form from './component/Form';
+import Fetch from './component/Fetch';
 
 export default class App extends Component {
   render() {
@@ -18,6 +19,7 @@ export default class App extends Component {
               <li><Link to="hello">Hello</Link></li>
               <li><Link to="life-cycle">Life Cycle</Link></li>
               <li><Link to="form">Form</Link></li>
+              <li><Link to="fetch">Fetch</Link></li>
             </ul>
           </div>
           <div className="container">
@@ -25,6 +27,7 @@ export default class App extends Component {
             <Route path="/hello" render={props => <Hello name="jake" {...props} />} />
             <Route path="/life-cycle" render={props => <LifeCycle message="test" {...props} />} />
             <Route path="/form" component={Form} />
+            <Route path="/fetch" component={Fetch} />
           </div>
         </div>
       </Router>
