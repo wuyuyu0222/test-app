@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import logo from '../logo.svg';
 
-class About extends Component {
+export default class About extends Component {
   render() {
     return (
       <header className="App-header">
@@ -13,5 +13,3 @@ class About extends Component {
     );
   }
 }
-
-export default About;

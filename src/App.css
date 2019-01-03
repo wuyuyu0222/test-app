@@ -15,7 +15,8 @@
   align-items: flex-start;
   justify-items: center;
   width: 15rem;
-  height: 100vh;
+  min-height: 100vh;
+  height: inherit;
 }
 
 .App-sidebar .sidenav {

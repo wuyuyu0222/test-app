@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 import logo from '../logo.svg';
 import PropTypes from 'prop-types';
 
-class Hello extends Component {
+export default class Hello extends Component {
+  static propTypes = {
+    name: PropTypes.string
+  };
+
   constructor(props) {
     super(props);
     this.name = props.name || 'World';
@@ -27,9 +31,3 @@ class Hello extends Component {
     );
   }
 }
-
-Hello.propTypes = {
-  name: PropTypes.string
-};
-
-export default Hello;

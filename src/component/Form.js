@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 
-export class Form extends Component {
+export default class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
+      email: '',
       gender: '',
-      age: 0,
-      personList: []
+      personList: [],
+      table: <table></table>
     };
   }
 
@@ -18,41 +19,46 @@ export class Form extends Component {
   }
 
   handleSubmit = (e) => {
-    const id = this.state.personList.length;
-    this.state.personList.push({
+    const id = this.state.personList.length + 1;
+    const newPerson = [{
       id: id,
       name: this.state.name,
       gender: this.state.gender,
-      age: this.state.age
-    });
+      email: this.state.email
+    }];
     this.setState({
       name: '',
       gender: '',
-      age: 0
-    }, () => console.log(this.state));
+      email: '',
+      personList: newPerson.concat(this.state.personList)
+    }, () => {
+      this.setState({ table: this.drawTable() });
+      console.log(this.state);
+    });
     e.preventDefault();
   }
 
-  displayTable = () => {
+  drawTable = () => {
+    console.log('drawTable');
     let personList = [];
     if (this.state.personList.length > 0) {
-      personList = this.state.personList.reverse().map(person => {
+      personList = this.state.personList.map(person => {
         return (
           <tr key={person.id}>
             <td>{person.name || 'Null'}</td>
+            <td>{person.email || 'Null'}</td>
             <td>{person.gender || 'Null'}</td>
-            <td>{person.age || 'Null'}</td>
           </tr>
         );
       });
     }
     return (
-      <table>
+      <table className="highlight">
         <thead>
           <tr>
             <th>Name</th>
+            <th>Email</th>
             <th>Gender</th>
-            <th>Age</th>
           </tr>
         </thead>
         <tbody>
@@ -63,6 +69,13 @@ export class Form extends Component {
   }
 
   render() {
+    if (this.state.error) {
+      return (
+        <div className="row mt-2x">
+          <p>Error: {this.state.error.message}</p>
+        </div>
+      )
+    }
     return (
       <div className="row mt-2x">
         <form className="col s12" onSubmit={this.handleSubmit}>
@@ -74,10 +87,10 @@ export class Form extends Component {
               <label htmlFor="input-name">Name</label>
             </div>
             <div className="input-field col s12">
-              <input type="number" id="input-age"
-                name="age" value={this.state.age}
+              <input type="text" id="input-email"
+                name="email" value={this.state.email}
                 onChange={this.handleInput} />
-              <label htmlFor="input-age">age</label>
+              <label htmlFor="input-email">Email</label>
             </div>
             <div className="input-field col s12">
               <p className="left">
@@ -99,11 +112,9 @@ export class Form extends Component {
           <input type="submit" value="submit" className="btn" />
         </form>
         <div className="col s12">
-          {this.displayTable()}
+          {this.state.table}
         </div>
       </div>
     )
   }
 }
-
-export default Form
