@@ -15,7 +15,8 @@ export default class App extends Component {
         <div className="App">
           <div className="App-sidebar">
             <ul id="nav-mobile" className="sidenav">
-              <li><Link to="/">App</Link></li>
+              <li><h3>Test App</h3></li>
+              <li><Link to="/">About</Link></li>
               <li><Link to="hello">Hello</Link></li>
               <li><Link to="life-cycle">Life Cycle</Link></li>
               <li><Link to="form">Form</Link></li>
