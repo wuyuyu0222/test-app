@@ -1,7 +1,18 @@
 import React, { Component } from 'react'
 import Table from './Table';
+import PropTypes from 'prop-types';
+
 
 export default class Form extends Component {
+  static propTypes = {
+    personList: PropTypes.array,
+    person: PropTypes.shape({
+      name: PropTypes.string,
+      email: PropTypes.string,
+      gender: PropTypes.string
+    })
+  }
+
   constructor(props) {
     super(props);
     this.state = {

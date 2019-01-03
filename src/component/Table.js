@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 
 export default class Table extends Component {
+  static propTypes = {
+    list: PropTypes.array
+  };
 
   render() {
     if (this.props.list && this.props.list.length > 0) {

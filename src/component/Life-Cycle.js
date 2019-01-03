@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
-
+import PropTypes from 'prop-types';
 export default class LifeCycle extends Component {
+  static propTypes = {
+    message: PropTypes.string
+  }
+
   constructor(props) {
     super(props);
     console.log('constructor');
