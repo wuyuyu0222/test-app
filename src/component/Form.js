@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Table from './Table';
 
 export default class Form extends Component {
   constructor(props) {
@@ -8,7 +9,6 @@ export default class Form extends Component {
     };
     this.personList = this.props.personList || [];
     this.person = this.props.person || { name: '', email: '', gender: '' };
-    this.table = this.drawTable([]);
   }
 
   componentDidMount() {
@@ -46,38 +46,7 @@ export default class Form extends Component {
     }];
     this.person = { name: '', email: '', gender: '' };
     this.personList = newPerson.concat(this.personList);
-    this.table = this.drawTable(this.personList);
     this.checkValid(this.person);
-  }
-
-  drawTable = (inputList) => {
-    console.log('drawTable', inputList);
-    let personList = [];
-    if (inputList.length > 0) {
-      personList = inputList.map(person => {
-        return (
-          <tr key={person.id}>
-            <td>{person.name || 'Null'}</td>
-            <td>{person.email || 'Null'}</td>
-            <td>{person.gender || 'Null'}</td>
-          </tr>
-        );
-      });
-    }
-    return (
-      <table className="highlight">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Gender</th>
-          </tr>
-        </thead>
-        <tbody>
-          {personList}
-        </tbody>
-      </table>
-    );
   }
 
   render() {
@@ -117,7 +86,7 @@ export default class Form extends Component {
           <input type="submit" value="submit" className="btn" disabled={!this.state.formValid} />
         </form>
         <div className="col s12">
-          {this.table}
+          <Table list={this.personList} />
         </div>
       </div>
     )
