@@ -29,8 +29,7 @@ export class Form extends Component {
       name: '',
       gender: '',
       age: 0
-    });
-    console.log(this.state);
+    }, () => console.log(this.state));
     e.preventDefault();
   }
 
