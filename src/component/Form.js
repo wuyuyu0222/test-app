@@ -4,45 +4,57 @@ export default class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      email: '',
-      gender: '',
-      personList: [],
-      table: <table></table>
+      formValid: false
     };
+    this.personList = this.props.personList || [];
+    this.person = this.props.person || { name: '', email: '', gender: '' };
+    this.table = this.drawTable([]);
+  }
+
+  componentDidMount() {
+    this.checkValid(this.person);
+  }
+
+  checkValid = (person) => {
+    if (person &&
+      (person.name || person.email ||
+        person.gender === 'male' || person.gender === 'female')) {
+      if (person.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+        this.setState({ formValid: true });
+      } else {
+        this.setState({ formValid: false });
+      }
+    } else {
+      this.setState({ formValid: false });
+    }
   }
 
   handleInput = (e) => {
     const targetName = e.target.getAttribute('name');
-    const value = e.target.value;
-    this.setState({ [targetName]: value });
+    this.person[targetName] = e.target.value;
+    this.checkValid(this.person);
   }
 
   handleSubmit = (e) => {
-    const id = this.state.personList.length + 1;
+    e.preventDefault();
+    const id = this.personList.length;
     const newPerson = [{
       id: id,
-      name: this.state.name,
-      gender: this.state.gender,
-      email: this.state.email
+      name: this.person.name,
+      email: this.person.email,
+      gender: this.person.gender
     }];
-    this.setState({
-      name: '',
-      gender: '',
-      email: '',
-      personList: newPerson.concat(this.state.personList)
-    }, () => {
-      this.setState({ table: this.drawTable() });
-      console.log(this.state);
-    });
-    e.preventDefault();
+    this.person = { name: '', email: '', gender: '' };
+    this.personList = newPerson.concat(this.personList);
+    this.table = this.drawTable(this.personList);
+    this.checkValid(this.person);
   }
 
-  drawTable = () => {
-    console.log('drawTable');
+  drawTable = (inputList) => {
+    console.log('drawTable', inputList);
     let personList = [];
-    if (this.state.personList.length > 0) {
-      personList = this.state.personList.map(person => {
+    if (inputList.length > 0) {
+      personList = inputList.map(person => {
         return (
           <tr key={person.id}>
             <td>{person.name || 'Null'}</td>
@@ -69,26 +81,19 @@ export default class Form extends Component {
   }
 
   render() {
-    if (this.state.error) {
-      return (
-        <div className="row mt-2x">
-          <p>Error: {this.state.error.message}</p>
-        </div>
-      )
-    }
     return (
       <div className="row mt-2x">
         <form className="col s12" onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="input-field col s12">
               <input type="text" id="input-name"
-                name="name" value={this.state.name}
+                name="name" value={this.person.name}
                 onChange={this.handleInput} />
               <label htmlFor="input-name">Name</label>
             </div>
             <div className="input-field col s12">
-              <input type="text" id="input-email"
-                name="email" value={this.state.email}
+              <input type="email" id="input-email"
+                name="email" value={this.person.email}
                 onChange={this.handleInput} />
               <label htmlFor="input-email">Email</label>
             </div>
@@ -97,22 +102,22 @@ export default class Form extends Component {
                 <label className="mr-2x">
                   <input type="radio" name="gender" value="male"
                     onChange={this.handleInput}
-                    checked={this.state.gender === "male"} />
+                    checked={this.person && this.person.gender === 'male'} />
                   <span>Male</span>
                 </label>
                 <label>
                   <input type="radio" name="gender" value="female"
                     onChange={this.handleInput}
-                    checked={this.state.gender === "female"} />
+                    checked={this.person && this.person.gender === 'female'} />
                   <span>Female</span>
                 </label>
               </p>
             </div>
           </div>
-          <input type="submit" value="submit" className="btn" />
+          <input type="submit" value="submit" className="btn" disabled={!this.state.formValid} />
         </form>
         <div className="col s12">
-          {this.state.table}
+          {this.table}
         </div>
       </div>
     )
