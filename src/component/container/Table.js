@@ -35,7 +35,11 @@ export default class Table extends Component {
 const TableHeader = (props) => {
   const { list } = props;
   const Headers = Object.keys(list[0]).filter(key => key !== 'id')
-    .map(key => <th key={key}>{key.toUpperCase()}</th>);
+    .map(key => {
+      return (
+        <th key={key}>{key.toUpperCase()}</th>
+      )
+    });
   return Headers
 }
 
@@ -44,7 +48,11 @@ const TableBody = (props) => {
   const Bodys = list.map(item => {
     const content = Object.keys(item)
       .filter(key => key !== 'id')
-      .map(key => <td key={key}>{item[key]}</td>);
+      .map(key => {
+        return (
+          <td key={key}>{item[key]}</td>
+        )
+      });
     return (
       <tr key={item.id}>{content}</tr>
     );
