@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Table from './Table';
+import Table from '../container/Table';
 import PropTypes from 'prop-types';
 
 
