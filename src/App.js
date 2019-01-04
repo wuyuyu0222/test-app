@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 
-import About from './component/About';
-import Hello from './component/Hello';
-import LifeCycle from './component/Life-Cycle';
-import Form from './component/Form';
-import Fetch from './component/Fetch';
+import About from './component/feature/About';
+import Hello from './component/feature/Hello';
+import LifeCycle from './component/feature/Life-Cycle';
+import Form from './component/feature/Form';
+import Fetch from './component/feature/Fetch';
 
 export default class App extends Component {
   render() {
