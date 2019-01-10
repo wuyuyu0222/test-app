@@ -53,6 +53,14 @@ body {
   margin-right: 16px;
 }
 
+.greenText {
+  color: green;
+}
+
+.redText {
+  color: red;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

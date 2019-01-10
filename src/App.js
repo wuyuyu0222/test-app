@@ -8,6 +8,8 @@ import LifeCycle from './component/feature/Life-Cycle';
 import Form from './component/feature/Form';
 import Fetch from './component/feature/Fetch';
 
+import ReduxCounter from './component/feature/Redux-Counter';
+
 export default class App extends Component {
   render() {
     const person = {
@@ -27,6 +29,7 @@ export default class App extends Component {
               <li><Link to="life-cycle">Life Cycle</Link></li>
               <li><Link to="form">Form</Link></li>
               <li><Link to="fetch">Fetch</Link></li>
+              <li><Link to="redux">Redux</Link></li>
             </ul>
           </div>
           <div className="container">
@@ -35,6 +38,7 @@ export default class App extends Component {
             <Route path="/life-cycle" render={props => <LifeCycle message={message} {...props} />} />
             <Route path="/form" render={props => <Form personList={[]} person={person} {...props} />} />
             <Route path="/fetch" component={Fetch} />
+            <Route path="/redux" component={ReduxCounter}></Route>
           </div>
         </div>
       </Router>
