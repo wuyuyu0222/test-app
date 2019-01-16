@@ -7,10 +7,16 @@ export default class ReduxCounter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
-      subscribe: false
+      count: store.getState(),
+      subscribe: true
     };
-    this.unsubscribe = () => { };
+    this.unsubscribe = store.subscribe(() => {
+      this.setState({ count: store.getState() });
+    });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
   }
 
   handleSubscribe = () => {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
+import store from '../../store/Store';
 export default class LifeCycle extends Component {
   static propTypes = {
     message: PropTypes.string
@@ -9,6 +10,9 @@ export default class LifeCycle extends Component {
     super(props);
     console.log('constructor');
     this.state = { date: new Date() };
+    this.unSub = store.subscribe(() => {
+      this.setState({ date: new Date() });
+    })
   }
 
   handleClick = () => {
@@ -44,6 +48,7 @@ export default class LifeCycle extends Component {
 
   componentWillUnmount() {
     console.log('componentWillUnmount');
+    this.unSub();
   }
 
   render() {
