@@ -10,6 +10,7 @@ import Fetch from './component/feature/Fetch';
 
 import ReduxCounter from './component/feature/Redux-Counter';
 import FinalForm from './component/feature/Final-Form';
+import FormikForm from './component/feature/Formik';
 
 export default class App extends Component {
   render() {
@@ -32,6 +33,7 @@ export default class App extends Component {
               <li><Link to="fetch">Fetch</Link></li>
               <li><Link to="redux">Redux</Link></li>
               <li><Link to="final-form">Final Form</Link></li>
+              <li><Link to="formik">Formik</Link></li>
             </ul>
           </div>
           <div className="container">
@@ -42,6 +44,7 @@ export default class App extends Component {
             <Route path="/fetch" component={Fetch} />
             <Route path="/redux" component={ReduxCounter} />
             <Route path="/final-form" component={FinalForm} />
+            <Route path="/formik" component={FormikForm} />
           </div>
         </div>
       </Router>
