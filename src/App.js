@@ -30,7 +30,6 @@ export default class App extends Component {
               <li><Link to="form">Form</Link></li>
               <li><Link to="fetch">Fetch</Link></li>
               <li><Link to="redux">Redux</Link></li>
-              <li><Link to="mobx">Mobx</Link></li>
             </ul>
           </div>
           <div className="container">
@@ -40,7 +39,6 @@ export default class App extends Component {
             <Route path="/form" render={props => <Form personList={[]} person={person} {...props} />} />
             <Route path="/fetch" component={Fetch} />
             <Route path="/redux" component={ReduxCounter} />
-            <Route path="/mobx" />
           </div>
         </div>
       </Router>
