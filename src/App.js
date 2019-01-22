@@ -9,6 +9,7 @@ import Form from './component/feature/Form';
 import Fetch from './component/feature/Fetch';
 
 import ReduxCounter from './component/feature/Redux-Counter';
+import FinalForm from './component/feature/Final-Form';
 
 export default class App extends Component {
   render() {
@@ -30,6 +31,7 @@ export default class App extends Component {
               <li><Link to="form">Form</Link></li>
               <li><Link to="fetch">Fetch</Link></li>
               <li><Link to="redux">Redux</Link></li>
+              <li><Link to="final-form">Final Form</Link></li>
             </ul>
           </div>
           <div className="container">
@@ -39,6 +41,7 @@ export default class App extends Component {
             <Route path="/form" render={props => <Form personList={[]} person={person} {...props} />} />
             <Route path="/fetch" component={Fetch} />
             <Route path="/redux" component={ReduxCounter} />
+            <Route path="/final-form" component={FinalForm} />
           </div>
         </div>
       </Router>
